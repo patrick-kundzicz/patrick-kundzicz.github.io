@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Spectrogram Exploration</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="title">Spectrogram Exploration of Music Genre Samples From 2000-2001</div>
+        <div id="description">
+            <p>
+                Built using the <b>GTZAN</b> dataset: 1000 songs categorized by genre<br>
+                The dataset contains audio (22050 Hz, 16-bit, mono), spectrograms, and a set of features for each song
+            </p>
+            <p>
+                <b>Chroma STFT (Short-Time Fourier Transform) Mean</b> <br>
+                - Groups the frequency range (0-11025 Hz) into 12 bins and averages the resulting value over our audio sample <br>
+                - Commonly used in tools for key or harmonic detection of a song <br>
+            </p>
+            <p>
+                <b>RMS (Root Mean-Square) Loudness</b><br>
+                - Measures the average amplitude of an audio sample <br>
+                - Gives an idea of (perceived) loudness and is a commonly-used metric when mixing and mastering of a song <br>
+                to make sure the dynamic/transient content is in-line with other tracks in the genre
+            </p>
+        </div>
+        <div id="main-chart"></div>
+        <select id="genre-selection-button" title="Click here to filter by genre"></select>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <style> circle {stroke: black;}</style>
+        <script src="main.js"></script>
+        <div id="story">
+            <p>
+                <b>Guided exploration: How are RMS, Chroma STFT, and Spectrogram visualizations relevant to music production</b>
+            </p>
+            <p>
+                <b>Click on a datapoint with a high RMS Mean value and a low Chroma STFT Mean.</b> <br>
+                - In the spectrogram, there are generally more bright regions for longer time periods <br>
+                - The spectrogram will also generally have more high frequencies if we compare to a low RMS Mean datapoint <br>
+                - Filling out the entire frequency spectrum with more content can lend itself to creating a louder track (although not a strict rule)
+            </p>
+            <p>
+                <b>Click on a datapoint with a low RMS Mean value and a high Chroma STFT Mean.</b> <br>
+                - Many songs are constructed using scales built on 12 degrees <br>
+                - Each scale degree across the different octaves and its overtones can be converted to a corresponding frequency <br>
+                - Because of this relationship, we can average out the frequency content of a song into a single value, and understand the general harmonic content <br>
+                - The samples chosen for "disco" have a higher variance in chroma than rock, which suggests that the harmonic content of the disco tracks are more varied <br>
+            </p>
+            <p>
+                <b>Why is this important to understand for people involved in the engineering of music</b><br>
+                - Generally, when music is made, we draw on references from our previous listening and try to create something new <br>
+                - When working on a song that falls under the umbrella of "metal", a producer will want the loudness and dynamic/transient content of that track to stand up to other metal tracks <br>
+                - The same producer working on a "classical" track would likely want that mix to stand up to other "classical" tracks, requiring a different set of references <br>
+                - Being mindful of common characteristics (like RMS loudness) in the genres you pull from are important to creating songs that stand up when played next to others in the genre <br>
+            </p>
+
+        </div>
+    </body>
+</html>
